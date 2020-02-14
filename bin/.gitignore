@@ -1,0 +1,2 @@
+# don't save our setuid binary to the repo
+python3
