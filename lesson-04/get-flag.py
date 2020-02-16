@@ -1,6 +1,6 @@
 #!/usr/bin/env ./../bin/python3
 
-def shuffle(thing_to_encode):
+def change_alphabet(thing_to_encode):
     alphabet = 'abcdefghijklmnopqrstuvwxyz'
     new_alphabet = 'xwqztayeunoifbkvslpgdcjmhr'
     encoded = ''
@@ -11,7 +11,7 @@ def shuffle(thing_to_encode):
 
 password = input('Please enter the password: ')
 
-if shuffle(password) == 'qetzzxl':
+if change_alphabet(password) == 'qetzzxl':
     with open('flag.txt', newline='') as f:
         print('The flag is: '+f.read(), end='')
 
