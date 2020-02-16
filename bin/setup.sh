@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# Run this scripts to copy in python3 with setuid set and correct the permissions on the flags etc
+# Run this script to copy in python3 with setuid set and correct the
+# permissions on the flags etc
 
 scriptDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
@@ -10,18 +11,32 @@ if ! [ -x "$(command -v python3)" ]; then
   exit 1
 fi
 
+# -------------------------------------
+# Run a given command sudo'd on a given file match in the lesson dirs
+# Arguments:
+#   nameMatch
+#   command
+# -------------------------------------
+function sudoFindRun {
+  nameMatch="$1"
+  command="${@:2}"
+  sudo find "$scriptDir/../" \
+    -type f \
+    -name "$nameMatch" \
+    -path "*/lesson-*" \
+    -exec $command {} \;
+}
+
 # Copy it and set suid bit so it runs as root
-pyBinary=$(which python3)
-sudo cp "$pyBinary" "$scriptDir/."
+sudo cp $(which python3) "$scriptDir/python3"
 sudo chown root:root "$scriptDir/python3"
 sudo chmod 4777 "$scriptDir/python3"
 
-# Make all the flags only readable by root
-sudo find "$scriptDir/../" -type f -name "*.txt" -exec chown root:root {} \;
-sudo find "$scriptDir/../" -type f -name "*.txt" -exec chmod 0400 {} \;
+# make all files owned by root
+sudoFindRun "*.*" chown root:root
 
-# Make all the get_flag.py scripts read & execute only
-sudo find "$scriptDir/../" -type f -name "*.py" -exec chown root:root {} \;
-sudo find "$scriptDir/../" -type f -name "*.py" -exec chmod 0555 {} \;
+# make all flags readable only by root
+sudoFindRun "flag.txt"  chmod 0400
 
-
+# make all get-flag.py files read and execute only
+sudoFindRun "get-flag.py" chmod 0555
