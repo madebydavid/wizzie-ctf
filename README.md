@@ -1,6 +1,8 @@
 # Wizzie Wizzie CTF
 
-### This is a small set of security challenges. The goal of each is to get the contents of the `flag.txt` file
+### This is a small set of security challenges. The goal of each is to get the contents of the `flag.txt` file.
+
+When run on linux and setup correctly, the player will not be able to access the `flat.txt` files and will need to read the code from each challenge to successfully solve.
 
 ## Setup
 
