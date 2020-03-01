@@ -6,7 +6,7 @@ def caesar(thing_to_encode):
     for character in thing_to_encode:
         letter_index = alphabet.index(character)
         new_index = letter_index + 13
-        if new_index > 26:
+        if new_index >= 26:
             new_index = new_index - 26
         encoded = encoded + alphabet[new_index]
     return encoded
