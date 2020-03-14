@@ -3,22 +3,23 @@
 
   <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="./style.css">
   </head>
 
   <body class="text-center">
 
     <form class="form-signin" action="/" method="post">
-      <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
 
-      <h3>Please sign in</h3>
+      <h1><i class="mb-4 fa fa-university" aria-hidden="true"></i></h1>
+      <h3>Wizzie Wizzie Bank</h3>
+      <hr />
+      <p class="prompt">Please enter your username and password</p>
       
       <input name="username" type="text" class="form-control" placeholder="Username" required autofocus>
-      
       <input name="password" type="password" class="form-control" placeholder="Password" required>
-      
       <button class="btn btn-lg btn-primary btn-block" type="submit">
-        Sign in
+        <i class="fa fa-lock" aria-hidden="true"></i> Log in
       </button>
 
     </form>
@@ -28,9 +29,10 @@
         if (params.has('error')) {
           var msg = params.get('error');
           var err = `<div class="alert alert-danger">${msg}</div>`;
-          var img = document.querySelector('h3');
+          var img = document.querySelector('.prompt');
           img.insertAdjacentHTML('afterend', err);
         }
     </script>
+
   </body>
 </html>
