@@ -23,5 +23,14 @@
 
     </form>
 
+    <script type="text/javascript">
+        var params = new URLSearchParams(window.location.search);
+        if (params.has('error')) {
+          var msg = params.get('error');
+          var err = `<div class="alert alert-danger">${msg}</div>`;
+          var img = document.querySelector('h3');
+          img.insertAdjacentHTML('afterend', err);
+        }
+    </script>
   </body>
 </html>
