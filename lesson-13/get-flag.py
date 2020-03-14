@@ -15,7 +15,7 @@ class BankHTTP(SimpleHTTPRequestHandler):
             content_length = int(self.headers['Content-Length'])
             post_data = self.rfile.read(content_length)
             login_info = parse_qs(post_data.decode())
-            print(login_info_raw.decode())
+            print(post_data.decode())
             print(login_info)
             print(login_info['username'])
         except:
