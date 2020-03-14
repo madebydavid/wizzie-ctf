@@ -42,9 +42,16 @@ class BankHTTP(http.server.SimpleHTTPRequestHandler):
             if user_passwords[username] != md5_password:
                 raise Exception('Invalid password')
 
-            print(user_passwords)
+            # Return the flag
+            flag_file = open('../flag.txt')
+            flag = flag_file.read()
+            self.send_response(200)
+            self.send_header('Content-type', 'text/plain')
+            self.end_headers()
+            self.wfile.write(bytes(flag, 'utf8'))
 
         except Exception as e:
+            # Show the error
             self.send_response(301)
             error = urllib.parse.quote(str(e))
             self.send_header('Location','/index.html?error=%s' % error)
